@@ -27,10 +27,10 @@ nav div{
     display: flex;
     align-items: center;
 } */
-.a img{
+.inav img{
     object-position: top 3px right 0px;
 }
-.a p{
+.inav p{
     font-weight: bolder;
     font-size: 30px;
     text-decoration-line: none;
@@ -52,13 +52,39 @@ main{
 }
 
 .B1{
-    background-color: 444444;
-    min-width: 250px;
-    min-height: 250px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #444444;
+    align-items: center;
+    width: 250px;
+    height:250px;
     border-radius: 25px;
     border-style: solid;
     border-width: 10cap;
     border-color: rgb(255, 255, 255);
+}
+.B1 a{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.a img{
+    width: 200px;
+}
+.b img{
+    width: 176px;
+}
+.c img{
+    width: 181px;
+}
+.B1 p{
+    position: absolute;
+    top:235px;
+    font-size: 3ch;
 }
 
 footer{
@@ -78,4 +104,7 @@ footer{
 }
 footer img{
     width: 25px;
+}
+.B1:hover img{
+    transform: scale(1.2);
 }
