@@ -19,9 +19,10 @@ app.get('/',async(req, res) => {
     try{
         const asset = await axios.get("https://shape-api.tupailabs.com/api/assets");
         if(asset){
+            console.log(asset);
             res.render('catalog', {
                 layout: false,
-                data:asset.data
+                data:asset.data.data
             })
         }
     }
@@ -30,10 +31,22 @@ app.get('/',async(req, res) => {
     }
 });
 
-app.get('/detail', (_req, res) => {
-    res.render('product-page', {
-        layout: false
-    })
+app.get('/detail/:id', async(req, res) => {
+    let id =  req.params.id;
+    try{
+        const detail = await axios.get("https://shape-api.tupailabs.com/api/asset/"+id);
+        if(detail){
+            console.log(detail);
+            res.render('product-page', {
+                layout: false,
+                data:detail.data.data
+            })
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+    
 });
 
 app.listen(port);

@@ -49,11 +49,11 @@
             </div>
         </div>
         <div class="content">
-        <% for( let index = 0; index < data.data.length; index++ ) { %>
+        <% for( let index = 0; index < data.length; index++ ) { %>
                 <div class="item-cart">
-                    <img src="<%= data.data[index].preview[0].url%>" alt="">
+                    <img src="<%= data[index].preview[0].url%>" alt="">
                     <div class="download-button">
-                        <a href="/detail">Download
+                        <a href="/detail/<%= data[index].id%>">Download
                             <img src="img/download.png" alt="">
                         </a>
                     </div>

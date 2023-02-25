@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -16,14 +16,14 @@
     <nav>
         <div class="logo-nav">
             <a href="/">
-                <img src="img/Logo.png" alt="logo-tupai">
+                <img src="../img/Logo.png" alt="logo-tupai">
                 <p>Shape</p>
             </a>
         </div>
         <div class="user">
             <a href="index-new.html">
                 <p>Sign in</p>
-                <img src="img/user.png"/>
+                <img src="../img/user.png"/>
             </a>
         </div>
     </nav>
@@ -32,17 +32,10 @@
     <!-- main -->
     <main class="margin-center">
         <div class="product-content">
-            <img src="img/Asset.png" alt="">
+            <img src="<%= data.detail[0].url %>" alt="">
             <div class="details">
-                <h1>Title</h1>
+                <h1><%= data.asset_name %></h1>
                 <div class="categories">
-                    <a href="#">Categories</a>
-                    <a href="#">Categories</a>
-                    <a href="#">Categories</a>
-                    <a href="#">Categories</a>
-                    <a href="#">Categories</a>
-                    <a href="#">Categories</a>
-                    <a href="#">Categories</a>
                     <a href="#">Categories</a>
                 </div>
                 <p>Created by @Tupailabs</p>
@@ -58,6 +51,7 @@
                         <option value="PSD">1K</option>
                       </select>
                     <input type="submit" value="Download">
+                    <!-- input jadikan a -->
                 </form>
             </div>
         </div>
@@ -72,10 +66,10 @@
             </div>
             <div class="social">
                 <a href="#">
-                    <img src="img/facebook.png" alt="logo-tupai">
+                    <img src="../img/facebook.png" alt="logo-tupai">
                 </a>
                 <a href="#">
-                    <img src="img/instagram.png" alt="logo-tupai">
+                    <img src="../img/instagram.png" alt="logo-tupai">
                 </a>
             </div>
         </div>
