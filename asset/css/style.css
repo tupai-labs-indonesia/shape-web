@@ -103,6 +103,14 @@ nav{
     color: #444444;
     margin: auto;
 }
+
+.user-details-dropdown a:hover{
+    color: #fff;
+    background-color: #444444;
+}
+.user-details-dropdown a:hover p{
+    color: #fff;
+}
 .user-details-dropdown a:last-child{
     border-radius: 0px 0px 5px 5px;
     border-style: none;
