@@ -38,6 +38,7 @@ nav{
 }
 .logo-nav img{
     height: 50px;
+    margin-right: 7px;
 }
 .logo-nav p{
     font-weight:lighter;
