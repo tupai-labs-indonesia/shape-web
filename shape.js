@@ -9,6 +9,7 @@ const { assert } = require('console');
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -22,7 +23,8 @@ app.get('/',async(req, res) => {
             console.log(asset);
             res.render('catalog', {
                 layout: 'layout',
-                data:asset.data.data
+                data:asset.data.data,
+                title: 'Tupai.Shape'
             })
         }
     }
@@ -39,7 +41,8 @@ app.get('/detail/:id', async(req, res) => {
             console.log(detail);
             res.render('product-page', {
                 layout: 'layout',
-                data:detail.data.data
+                data:detail.data.data,
+                title: detail.data.data.asset_name + ' | Tupai.Shape'
             })
         }
     }
