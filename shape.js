@@ -8,7 +8,7 @@ const { assert } = require('console');
 
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -21,7 +21,7 @@ app.get('/',async(req, res) => {
         if(asset){
             console.log(asset);
             res.render('catalog', {
-                layout: false,
+                layout: 'layout',
                 data:asset.data.data
             })
         }
@@ -38,7 +38,7 @@ app.get('/detail/:id', async(req, res) => {
         if(detail){
             console.log(detail);
             res.render('product-page', {
-                layout: false,
+                layout: 'layout',
                 data:detail.data.data
             })
         }
