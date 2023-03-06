@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const { assert } = require('console');
+const { response } = require('express');
 
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
@@ -50,6 +51,46 @@ app.get('/detail/:id', async(req, res) => {
         console.log(err);
     }
     
+});
+
+app.get('/login',(req, res) => {
+    res.render('login', {
+        layout: false
+    })
+});
+
+app.post('/login', async(req, res) => {
+    let username1 = req.body.username;
+    let password2 = req.body.password;
+        const login = await axios.post("https://shape-api.tupailabs.com/api/login",
+        {
+            "username" : username1,
+            "password" : password2
+        });
+        res.json(login.data);
+        console.log(login.data);
+});
+
+app.get('/register',(req, res) => {
+    res.render('register', {
+        layout: false
+    })
+});
+
+app.post('/register', async(req, res) => {
+    let name1 = req.body.name;
+    let username1 = req.body.username;
+    let email1 = req.body.email;
+    let password2 = req.body.password;
+        const register = await axios.post("https://shape-api.tupailabs.com/api/user/registration",
+        {
+            "name" : name1,
+            "username" : username1,
+            "email" : email1,
+            "password" : password2
+        });
+        res.json(register.data);
+        console.log(register.data);
 });
 
 app.listen(port);
