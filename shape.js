@@ -6,8 +6,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const store = require('store');
 const jwt = require('jsonwebtoken');
-const { assert } = require('console');
-const { response } = require('express');
+const session = require('express-session');
 
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
@@ -17,20 +16,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const {login} = require('./services/auth');
+app.use(session({secret: 'GREPETINTOMANGUYA', resave: true, saveUninitialized: true}))
+
 
 const port = 8008;
 
 app.get('/',async(req, res) => {
     try{
         const asset = await axios.get("https://shape-api.tupailabs.com/api/assets");
+
+        console.log(req.session);
         
         let username = "";
         
-        if(store.get('user')){
-            const userToken = store.get('user').token;
+        if(req.session.userToken){
+            const userToken = req.session.userToken;
             const decoded = jwt.verify(userToken, 'nMxSMng0kZOFiomhFkH4z0QghBjbWPvgipBcM8UdfwpsQNwRKX3OW8FlapKEMdAN');
             if(decoded){
-                username = store.get('user').username;
+                username = req.session.username;
             }
         }
 
