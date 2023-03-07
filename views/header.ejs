@@ -22,7 +22,11 @@
         </div>
         <div class="user">
             <a href="/login">
-                <p>Sign in</p>
+                <% if(username != "" || username != null) { %>
+                    <p><%= username; %></p>
+                <% }else{ %>
+                    <p>Sign in</p>
+                <% } %>
                 <img src="../img/user.png"/>
             </a>
         </div>

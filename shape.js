@@ -4,6 +4,8 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express();
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const store = require('store');
+const jwt = require('jsonwebtoken');
 const { assert } = require('console');
 const { response } = require('express');
 
@@ -14,19 +16,30 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const {login} = require('./service/auth');
+const {login} = require('./services/auth');
 
 const port = 8008;
 
 app.get('/',async(req, res) => {
     try{
         const asset = await axios.get("https://shape-api.tupailabs.com/api/assets");
+        
+        let username = "";
+        
+        if(store.get('user')){
+            const userToken = store.get('user').token;
+            const decoded = jwt.verify(userToken, 'nMxSMng0kZOFiomhFkH4z0QghBjbWPvgipBcM8UdfwpsQNwRKX3OW8FlapKEMdAN');
+            if(decoded){
+                username = store.get('user').username;
+            }
+        }
+
         if(asset){
-            console.log(asset);
             res.render('catalog', {
                 layout: 'layout',
                 data:asset.data.data,
-                title: 'Tupai.Shape'
+                title: 'Tupai.Shape',
+                username
             })
         }
     }
