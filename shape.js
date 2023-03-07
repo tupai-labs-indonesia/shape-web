@@ -14,6 +14,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const {login} = require('./service/auth');
 
 const port = 8008;
 
@@ -59,16 +60,12 @@ app.get('/login',(req, res) => {
     })
 });
 
+
 app.post('/login', async(req, res) => {
-    let username1 = req.body.username;
-    let password2 = req.body.password;
-        const login = await axios.post("https://shape-api.tupailabs.com/api/login",
-        {
-            "username" : username1,
-            "password" : password2
-        });
-        res.json(login.data);
-        console.log(login.data);
+    
+    let username = req.body.username;
+    let password = req.body.password;
+    const authLogin = await login(username,password,req,res);
 });
 
 app.get('/register',(req, res) => {
