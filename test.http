@@ -1,0 +1,11 @@
+GET https://shape-api.tupailabs.com/api/users
+
+
+###
+POST https://shape-api.tupailabs.com/api/user/registration
+content-type: application/json
+
+{
+    "username": "",
+    "password": ""
+}

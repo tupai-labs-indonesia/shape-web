@@ -53,6 +53,10 @@ app.get('/',async(req, res) => {
 
 app.get('/detail/:id', async(req, res) => {
     let id =  req.params.id;
+    let username = "";
+    if(req.session.username){
+        username = req.session.username;
+    }
     try{
         const detail = await axios.get("https://shape-api.tupailabs.com/api/asset/"+id);
         if(detail){
@@ -60,7 +64,8 @@ app.get('/detail/:id', async(req, res) => {
             res.render('product-page', {
                 layout: 'layout',
                 data:detail.data.data,
-                title: detail.data.data.asset_name + ' | Tupai.Shape'
+                title: detail.data.data.asset_name + ' | Tupai.Shape',
+                username
             })
         }
     }
