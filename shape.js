@@ -106,4 +106,9 @@ app.post('/register', async(req, res) => {
         console.log(register.data);
 });
 
+app.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.send("Your are logged out ");
+});
+
 app.listen(port);
