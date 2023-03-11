@@ -9,3 +9,14 @@ content-type: application/json
     "username": "",
     "password": ""
 }
+
+###
+
+POST https://shape-api.tupailabs.com/api/asset/add
+content-type: application/json
+
+###
+GET https://shape-api.tupailabs.com/api/asset/dropdown/1?dd_type=image_type
+
+###
+GET https://shape-api.tupailabs.com/api/asset/1
