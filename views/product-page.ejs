@@ -10,16 +10,16 @@
                 <p>Created by @Tupailabs</p>
                 <form>
                     <select name="type" id="type">
-                      <option value="PSD">Photoshop</option>
-                      <option value="FIG">Figma</option>
-                      <option value="PNG">PNG</option>
+                        <% for( let index = 0; index < assettype.length; index++ ) { %>
+                            <option value="<%= assettype[index]%>"><%= text.toUpperCase(assettype[index]) %></option>
+                            <% } %>
                     </select>
-                    <select name="size" id="size">
+                    <!-- <select name="size" id="size">
                         <option value="4K">4K</option>
                         <option value="2K">2K</option>
                         <option value="1K">1K</option>
                         <option value="500">500</option>
-                      </select>
+                      </select> -->
                     <input type="submit" value="Download">
                     <!-- input jadikan a -->
                 </form>

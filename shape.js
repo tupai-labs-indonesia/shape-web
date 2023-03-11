@@ -59,13 +59,15 @@ app.get('/detail/:id', async(req, res) => {
     }
     try{
         const detail = await axios.get("https://shape-api.tupailabs.com/api/asset/"+id);
+        const assetType = await axios.get("https://shape-api.tupailabs.com/api/asset/dropdown/"+id+"?dd_type=image_type");
         if(detail){
             console.log(detail);
             res.render('product-page', {
                 layout: 'layout',
                 data:detail.data.data,
                 title: detail.data.data.asset_name + ' | Tupai.Shape',
-                username
+                username,
+                assettype: assetType.data.data
             })
         }
     }
@@ -74,6 +76,8 @@ app.get('/detail/:id', async(req, res) => {
     }
     
 });
+
+
 
 app.get('/login',(req, res) => {
     res.render('login', {

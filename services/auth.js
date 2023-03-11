@@ -20,7 +20,7 @@ const login =async(username,password,req,res)=>{
             req.session.username = decoded.username;
             req.session.userToken = user.data.token;
 
-            res.redirect('/');
+            res.redirect('back');
         }
     }
 }
