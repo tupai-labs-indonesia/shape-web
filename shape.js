@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const {login} = require('./services/auth');
+const { response } = require('express');
 app.use(session({secret: 'GREPETINTOMANGUYA', resave: true, saveUninitialized: true}))
 
 
@@ -24,11 +25,8 @@ const port = 8008;
 app.get('/',async(req, res) => {
     try{
         const asset = await axios.get("https://shape-api.tupailabs.com/api/assets");
-
         console.log(req.session);
-        
         let username = "";
-        
         if(req.session.userToken){
             const userToken = req.session.userToken;
             const decoded = jwt.verify(userToken, 'nMxSMng0kZOFiomhFkH4z0QghBjbWPvgipBcM8UdfwpsQNwRKX3OW8FlapKEMdAN');
@@ -45,6 +43,33 @@ app.get('/',async(req, res) => {
                 username
             })
         }
+    }
+    catch(err){
+        console.log(err);
+    }
+});
+
+app.post('/search',async(req, res) => {
+    let search = req.body.search;
+    console.log(search);
+    let username = "";
+    if(req.session.username){
+        username = req.session.username;
+    }
+    try{
+        if(search){
+            const assetSearch = await axios.get("https://shape-api.tupailabs.com/api/assets/search?search="+search);
+            console.log(search);
+            if(assetSearch){
+            res.render('catalog', {
+                layout: 'layout',
+                data: assetSearch.data.data,
+                title: 'Tupai.Shape',
+                username
+            })
+            }
+        }
+        
     }
     catch(err){
         console.log(err);
