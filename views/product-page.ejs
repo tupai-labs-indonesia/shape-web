@@ -8,11 +8,11 @@
                     <a href="#">Categories</a>
                 </div>
                 <p>Created by @Tupailabs</p>
-                <form>
+                <form method="post">
                     <select name="type" id="type">
                         <% for( let index = 0; index < assettype.length; index++ ) { %>
-                            <option value="<%= assettype[index]%>"><%= text.toUpperCase(assettype[index]) %></option>
-                            <% } %>
+                            <option value="<%= assettype[index] %>"><%= assettype[index].toUpperCase() %></option>
+                        <% } %>
                     </select>
                     <!-- <select name="size" id="size">
                         <option value="4K">4K</option>

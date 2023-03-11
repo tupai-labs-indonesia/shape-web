@@ -77,6 +77,28 @@ app.get('/detail/:id', async(req, res) => {
     
 });
 
+app.post('/detail/:id', async(req, res) => {
+    let id =  req.params.id;
+    let type =  req.body.type;
+
+    if(type){
+        const detail = await axios.get("https://shape-api.tupailabs.com/api/asset/"+id);
+
+        if(detail){
+            const data = detail.data.data.detail;
+
+            for(let i=0; i<data.length; i++){
+                if(data[i].type == type){
+                    res.redirect(data[i].url);
+                }
+            }
+        }
+        
+    }
+
+});
+
+
 
 
 app.get('/login',(req, res) => {
