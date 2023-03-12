@@ -20,9 +20,10 @@ const { response } = require('express');
 app.use(session({secret: 'GREPETINTOMANGUYA', resave: true, saveUninitialized: true}))
 
 
+
 const port = 8008;
 
-app.get('/',async(req, res) => {
+app.get('/', async(req, res) => {
     try{
         const asset = await axios.get("https://shape-api.tupailabs.com/api/assets");
         console.log(req.session);
@@ -36,6 +37,8 @@ app.get('/',async(req, res) => {
         }
 
         if(asset){
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             res.render('catalog', {
                 layout: 'layout',
                 data:asset.data.data,
@@ -51,25 +54,16 @@ app.get('/',async(req, res) => {
 
 app.post('/search',async(req, res) => {
     let search = req.body.search;
-    console.log(search);
     let username = "";
     if(req.session.username){
         username = req.session.username;
     }
     try{
-        if(search){
-            const assetSearch = await axios.get("https://shape-api.tupailabs.com/api/assets/search?search="+search);
-            console.log(search);
-            if(assetSearch){
-            res.render('catalog', {
-                layout: 'layout',
-                data: assetSearch.data.data,
-                title: 'Tupai.Shape',
-                username
-            })
-            }
+        const assetSearch = await axios.get("https://shape-api.tupailabs.com/api/assets/search?search="+search);
+        console.log("berhasil search");
+        if(assetSearch){
+        res.json({data: assetSearch.data.data});
         }
-        
     }
     catch(err){
         console.log(err);

@@ -183,7 +183,7 @@ nav{
     width: 50%;
 }
 
-.search form{
+.search .searchContainer{
     position: relative;
     width: 100%;
     height: 40px;
