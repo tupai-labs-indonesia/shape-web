@@ -52,7 +52,7 @@
                         if(response){
                             const data = response.data;
                             if(data.length < 1){
-                                $(".content").html(`<p>Aset dengan keyword '${searchValue}' belum tersedia.</p>`);
+                                $(".content").html(`<p>'${searchValue}' Not Found.</p>`);
                             }else{
                                 var html = '';
                                 data.map((item) => {

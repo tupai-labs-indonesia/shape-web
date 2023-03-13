@@ -234,12 +234,41 @@ nav{
     padding: 10px;
     gap: 20px;
 }
-.product-content img{
-    width: 50%;
+
+.content-image{
+    width: 75%;
+    margin:0 auto;
+    box-sizing: content-box;
+}
+
+.content-image img{
+    width: 100%;
     height: auto;
     border-style: solid;
     border-radius: 3vh;
     background-color: #1E1E22;
+}
+
+.image-slc{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap:0.5em;
+}
+
+.image-slc img{
+    width: 20%;
+    height: auto;
+    border-style: solid;
+    border-radius: 1vh;
+    background-color: #1E1E22;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.image-slc img:hover{
+    opacity: 1;
 }
 .details{
     display: flex;
@@ -475,8 +504,15 @@ footer img{
         flex-direction: column;
         align-items: center;
     }
-    .product-content img{
+    .content-image img{
         width: 100%;
+    }
+    .image-slc img{
+        width: 20%;
+        height: auto;
+        border-style: solid;
+        border-radius: 1vh;
+        background-color: #1E1E22;
     }
     h1{
         font-size: 40px;

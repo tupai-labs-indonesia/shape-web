@@ -1,15 +1,10 @@
     <!-- main -->
     <main class="margin-center">
         <div class="product-content">
-            <div class="content-image">
-                <img src="<%= data.detail[0].url %>" alt="" id="large-preview" >
-                <div class="image-slc">
-                    <img src="<%= data.detail[0].url %>" alt="" onclick="myFunction(this);">
-                    <img src="../img/download.png" alt="" onclick="myFunction(this);">
-                    <img src="../img/facebook.png" alt="" onclick="myFunction(this);">
-                </div>
-            </div>
+            
+            <img src="<%= data.detail[0].url %>" alt="">
 
+            
             <div class="details">
                 <h1><%= data.asset_name %></h1>
                 <div class="categories">
@@ -34,16 +29,3 @@
             </div>
         </div>
     </main>
-
-    <script type="text/javascript">
-        function myFunction(imgs) {
-        // Get the expanded image
-        var expandImg = document.getElementById("large-preview");
-        // Get the image text
-        // Use the same src in the expanded image as the image being clicked on from the grid
-        expandImg.src = imgs.src;
-        // Use the value of the alt attribute of the clickable image as text inside the expanded image
-        // Show the container element (hidden with CSS)
-        
-        }
-    </script>

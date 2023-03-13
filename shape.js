@@ -60,7 +60,7 @@ app.post('/search',async(req, res) => {
     }
     try{
         const assetSearch = await axios.get("https://shape-api.tupailabs.com/api/assets/search?search="+search);
-        console.log("berhasil search");
+        console.log("Search Succeed");
         if(assetSearch){
         res.json({data: assetSearch.data.data});
         }
