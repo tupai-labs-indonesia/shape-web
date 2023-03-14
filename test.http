@@ -19,7 +19,7 @@ content-type: application/json
 GET https://shape-api.tupailabs.com/api/asset/dropdown/1?dd_type=image_type
 
 ###
-GET https://shape-api.tupailabs.com/api/assets
+GET https://shape-api.tupailabs.com/api/asset/1
 
 ###
 GET https://shape-api.tupailabs.com/api/assets/search?search=Bom

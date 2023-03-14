@@ -122,7 +122,8 @@ app.post('/detail/:id', async(req, res) => {
 
 app.get('/login',(req, res) => {
     res.render('login', {
-        layout: false
+        layout: false,
+        title: 'Login'
     })
 });
 
@@ -136,7 +137,8 @@ app.post('/login', async(req, res) => {
 
 app.get('/register',(req, res) => {
     res.render('register', {
-        layout: false
+        layout: false,
+        title: 'Register'
     })
 });
 
@@ -152,8 +154,9 @@ app.post('/register', async(req, res) => {
             "email" : email1,
             "password" : password2
         });
-        res.json(register.data);
-        console.log(register.data);
+        // res.json(register.data);
+        // console.log(register.data);
+        res.redirect('/login');
 });
 
 app.get("/logout", (req, res) => {
